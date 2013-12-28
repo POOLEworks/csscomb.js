@@ -1,0 +1,14 @@
+{
+    "remove-empty-rulesets": true,
+    "always-semicolon": true,
+    "element-case": "lower",
+    "strip-spaces": true,
+    "eof-newline": true,
+    "stick-brace": "\n",
+    "colon-space": [
+        "",
+        " "
+    ],
+    "rule-indent": "    ",
+    "unitless-zero": true
+}

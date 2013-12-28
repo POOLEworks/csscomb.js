@@ -1,2 +1,5 @@
 #!/usr/bin/env node
-require('../lib/cli');
+var CombCli = process.env.TEST_COV ?
+    require('../lib-cov/cli') : require('../lib/cli');
+var cli = new CombCli();
+cli.run();
