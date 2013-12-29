@@ -48,79 +48,39 @@ div {
 
 ## block-indent
 
-**Note**: This option should be used together with [rule-indent](#rule-indent).
+Set indent for block content (usually it's content inside braces).    
+This option changes indent only for code that starts at new line.
 
 Acceptable values:
 
 * `{Number}` of spaces;
-* `{String}` of whitespaces or tabs. If there is any other character in the
-   string, the value will not be set.
+* `{String}` containing spaces, tabs and/or new lines.
 
-Example: `{ "block-indent": 2 }`
-
-```css
-/* before */
-  a { color: red }
-  @media all { a { color: green } }
-
-/* after */
-a { color: red
-}
-@media all {
-  a { color: green
-  }
-}
-```
-
-Example: `{ "block-indent": "  " }`
+Example: `{ 'block-indent': 4 }`
 
 ```css
-/* before */
-  a { color: red }
-  @media all { a { color: green } }
-
-/* after */
-a { color: red
+/* Before */
+a {
+ top: 0;
+ color: tomato;
 }
-@media all {
-  a { color: green
-  }
+
+.nani {position: panda}
+
+.panda {color: white;
+font-weight: bold;}
+
+/* After */
+a {
+    top: 0;
+    color: tomato;
 }
+
+.nani {position: panda}
+
+.panda {color: white;
+    font-weight: bold;}
 ```
-
-## colon-space
-
-Set spaces around `:`.
-
-Acceptable value is `{Array}` with 2 elements of the following types:
-
-* `{Number}` of spaces;
-* `{String}` of whitespaces or tabs. If there is any other character in the
-   string, the value will not be set.
-
-The first element of the array sets spaces before colon, and the second one sets
-spaces after colon.
-
-Example: `{ "colon-space": ["\t", "\t"] }`
-
-```css
-/* before */
-a { color: red }
-
-/* after */
-a { color	:	red }
-```
-
-Example: `{ "colon-space": [0, 1] }`
-
-```css
-/* before */
-a { color:red }
-
-/* after */
-a { color: red }
-```
-
 
 ## color-case
 
@@ -169,41 +129,6 @@ b { color: #fc0 }
 /* after */
 b { color: #ffcc00 }
 ```
-
-## combinator-space
-
-Set spaces around combinator.
-
-Acceptable value is `{Array}` with 2 elements of the following types:
-
-* `{Number}` of spaces;
-* `{String}` of whitespaces, tabs or new lines. If there is any other
-   character in the string, the value will not be set.
-
-The first element of the array sets spaces before combinator, and the second
-one sets spaces after combinator.
-
-Example: `{ "combinator-space": [" ", "\n"] }`
-
-```css
-/* before */
-a>b { color: red }
-
-/* after */
-a >
-b { color: red }
-```
-
-Example: `{ "combinator-space": [1, 1] }`
-
-```css
-/* before */
-a>b { color: red }
-
-/* after */
-a > b { color: red }
-```
-
 
 ## element-case
 
@@ -301,40 +226,6 @@ Example: `{ "remove-empty-rulesets": true }`.
 
 `a { color: red; } p { /* hey */ } b { }` &rarr; `a { color: red; } p { /* hey */ } `
 
-## rule-indent
-
-**Note**: This option should be used together with [block-indent](#block-indent).
-
-Acceptable values:
-
-* `{Number}` of spaces;
-* `{String}` of whitespaces or tabs. If there is any other character in the
-   string, the value will not be set.
-
-Example: `{ "rule-indent": 2 }`
-
-```css
-/* before */
-a { color:red; margin:0 }
-
-/* after */
-a {
-  color:red;
-  margin:0 }
-```
-
-Example: `{ "rule-indent": "  " }`
-
-```css
-/* before */
-a { color:red; margin:0 }
-
-/* after */
-a {
-  color:red;
-  margin:0 }
-```
-
 ## sort-order
 
 Set sort order.
@@ -417,35 +308,249 @@ p {
 }
 ```
 
-## stick-brace
+## space-after-colon
 
-Set spaces before `{`.
+Set space after `:` in declarations.
 
 Acceptable values:
 
 * `{Number}` of spaces;
-* `{String}` of whitespaces, tabs or newlines. If there is any other
-   character in the string, the value will not be set.
+* `{String}` containing spaces, tabs and/or new lines.
 
-Example: `{ "stick-brace": "\n" }`
+Example: `{ 'space-after-colon': 1 }`
 
 ```css
-/* before */
-a { color:red }
+/* Before */
+a {
+    top:0;
+    color:tomato;
+}
 
-/* after */
-a
-{ color:red }
+/* After */
+a {
+    top: 0;
+    color: tomato;
+}
 ```
 
-Example: `{ "stick-brace": 1 }`
+## space-after-combinator
+
+Set space after combinator.
+
+Acceptable values:
+
+* `{Number}` of spaces;
+* `{String}` containing spaces, tabs and/or new lines.
+
+Example: `{ 'space-after-combinator': '\n' }`
 
 ```css
-/* before */
-a{ color:red }
+/* Before */
+a>span {
+    top: 0;
+    color: tomato;
+}
 
-/* after */
-a { color:red }
+/* After */
+a>
+span {
+    top: 0;
+    color: tomato;
+}
+```
+
+## space-after-opening-brace
+
+Set space after `{`.
+
+Acceptable values:
+
+* `{Number}` of spaces;
+* `{String}` containing spaces, tabs and/or new lines.
+
+Example: `{ 'space-after-opening-brace': 1 }`
+
+```css
+/* Before */
+a {
+    top: 0;
+    color: tomato;
+}
+
+/* After */
+a { top: 0;
+    color: tomato;
+}
+```
+
+## space-before-closing-brace
+
+Set space before `}`.
+
+Acceptable values:
+
+* `{Number}` of spaces;
+* `{String}` containing spaces, tabs and/or new lines.
+
+Example: `{ 'space-before-closing-brace': '' }`
+
+```css
+/* Before */
+a {
+    top:0;
+    color:tomato;
+}
+
+/* After */
+a {
+    top: 0;
+    color: tomato;}
+```
+
+Example: `{ 'space-before-closing-brace': '\n    ' }`
+
+```css
+/* Before */
+a {
+    top:0;
+    color:tomato;
+}
+
+/* After */
+a {
+    top: 0;
+    color: tomato;
+    }
+```
+
+## space-before-colon
+
+Set space before `:` in declarations.
+
+Acceptable values:
+
+* `{Number}` of spaces;
+* `{String}` containing spaces, tabs and/or new lines.
+
+Example: `{ 'space-before-colon': 1 }`
+
+```css
+/* Before */
+a {
+    top:0;
+    color:tomato;
+}
+
+/* After */
+a {
+    top :0;
+    color :tomato;
+}
+```
+
+## space-before-combinator
+
+Set space before combinator.
+
+Acceptable values:
+
+* `{Number}` of spaces;
+* `{String}` containing spaces, tabs and/or new lines.
+
+Example: `{ 'space-before-combinator': '\n' }`
+
+```css
+/* Before */
+a>span {
+    top: 0;
+    color: tomato;
+}
+
+/* After */
+a
+>span {
+    top: 0;
+    color: tomato;
+}
+```
+
+## space-before-opening-brace
+
+Set space before `{`.
+
+Acceptable values:
+
+* `{Number}` of spaces;
+* `{String}` containing spaces, tabs and/or new lines.
+
+Example: `{ 'space-before-opening-brace': '\n' }`
+
+```css
+/* Before */
+a {
+    top: 0;
+    color: tomato;
+}
+
+/* After */
+a
+{
+    top: 0;
+    color: tomato;
+}
+```
+
+## space-between-declarations
+
+Set space between declarations.
+
+Acceptable values:
+
+* `{Number}` of spaces;
+* `{String}` containing spaces, tabs and/or new lines.
+
+Example: `{ 'space-between-declarations': '\n' }`
+
+```css
+/* Before */
+a { top: 0; color: tomato; position: happy; }
+
+/* After */
+a { top: 0;
+color: tomato;
+position: happy; }
+```
+
+Example: `{ 'space-between-declarations': 1 }`
+
+```css
+/* Before */
+a { top: 0;
+color: tomato;
+position: happy; }
+
+/* After */
+a { top: 0; color: tomato; position: happy; }
+```
+
+## space-between-rules
+
+Set space between rules.
+
+Acceptable values:
+
+* `{Number}` of spaces;
+* `{String}` containing spaces, tabs and/or new lines.
+
+Example: `{ 'space-between-rules': 1 }`
+
+```css
+/* Before */
+a { top:0; color:tomato }
+.panda { color:black }
+
+/* After */
+a { top:0; color:tomato } .panda { color:black }
 ```
 
 ## strip-spaces
@@ -459,6 +564,12 @@ Example: `{ "strip-spaces": true }`
 `a { color: red } \n \n \n` &rarr; `a { color: red }\n`
 
 `a { color: red }\t` &rarr; `a { color: red }`
+
+## tab-size
+
+Replace all tab characters with whitespaces.
+
+Acceptable value: `{Number}` of spaces.
 
 ## template
 
